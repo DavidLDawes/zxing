@@ -28,8 +28,6 @@ import com.google.zxing.Result;
 import com.coact.kochzap.history.HistoryActivity;
 import com.coact.kochzap.util.Companies;
 import com.coact.kochzap.share.ShareActivity;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 public class StartActivity extends AppCompatActivity implements OnClickListener {
 

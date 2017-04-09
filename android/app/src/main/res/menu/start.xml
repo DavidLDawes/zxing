@@ -20,10 +20,6 @@
       android:title="@string/menu_help"
       android:icon="@android:drawable/ic_menu_help"
       app:showAsAction="withText|ifRoom"/>
-  <item android:id="@+id/menu_share"
-      android:title="@string/menu_share"
-      android:icon="@android:drawable/ic_menu_share"
-      app:showAsAction="withText|ifRoom"/>
   <item android:id="@+id/menu_settings"
       android:title="@string/menu_settings"
       android:icon="@android:drawable/ic_menu_preferences"
@@ -36,4 +32,8 @@
       android:title="@string/menu_capture"
       android:icon="@android:drawable/ic_menu_camera"
       app:showAsAction="withText"/>
+   <item android:id="@+id/menu_share"
+      android:title="@string/menu_share"
+      android:icon="@android:drawable/ic_menu_share"
+      app:showAsAction="withText|ifRoom"/>
 </menu>

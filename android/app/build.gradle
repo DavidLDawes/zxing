@@ -6,8 +6,8 @@ android {
         applicationId "com.coact.kochzap"
         minSdkVersion 11
         targetSdkVersion 25
-        versionCode 300
-        versionName '5.11 Beta'
+        versionCode 301
+        versionName '5.2 Beta'
     }
     buildTypes {
         release {

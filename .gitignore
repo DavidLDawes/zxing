@@ -7,3 +7,4 @@ android/build
 android/.gradle
 android/app/app-release.apk
 android/app/app-debug.apk
+core/src/test/resources/blackbox

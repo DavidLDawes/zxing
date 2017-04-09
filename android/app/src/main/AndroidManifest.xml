@@ -22,7 +22,7 @@
     package="com.coact.kochzap"
     android:installLocation="auto"
     android:versionCode="211"
-    android:versionName="5.0.11 Beta">
+    android:versionName="5.0.12 Beta">
 
     <uses-sdk
         android:minSdkVersion="11"

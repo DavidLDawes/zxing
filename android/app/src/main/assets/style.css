@@ -2,6 +2,7 @@ body {
   background-color: #000000;
   color: #FFFFFF;
   max-width: 800px;
+  font-family:  "arial", "sans-serif";
 }
 
 img {
@@ -32,6 +33,10 @@ img {
     float:right;
     margin: .5em;
 
+}
+
+#tagline, #title {
+    text-align: center;
 }
 
 li {

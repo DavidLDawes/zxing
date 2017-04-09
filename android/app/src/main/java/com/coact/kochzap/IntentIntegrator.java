@@ -118,7 +118,7 @@ public class IntentIntegrator {
     public static final String DEFAULT_YES = "Yes";
     public static final String DEFAULT_NO = "No";
 
-    private static final String BS_PACKAGE = "com.kochzap";
+    private static final String BS_PACKAGE = "com.coact.kochzap";
     private static final String BSPLUS_PACKAGE = "com.srowen.bs.android";
 
     // supported barcode formats

@@ -1,10 +1,9 @@
 <img align="right" src="https://raw.github.com/wiki/zxing/zxing/zxing-logo.png"/>
-## Forked
 
+## Forked
 This is a fork off of the regular zxing open source project.
 
 #### Added to the fork
-
 Fork specific additions:
 Added list of bad companies, susidiaries of Koch Industries to the best of our abilities.
 When scanning a product, if the company (first 6 digits) matches one of the Kock Brother's Industries

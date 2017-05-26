@@ -19,6 +19,7 @@ android {
             pseudoLocalesEnabled false
             proguardFile 'proguard-rules.txt'
             //proguardFile 'C:/Users/DavidDawes/AppData/Local/Android/sdk/tools/proguard/proguard-android-optimize.txt'
+            //proguardFile '/home/davidldawes/Android/Sdk/tools/proguard/proguard-android-optimize.txt
             proguardFile 'C:/Users/jugld/AppData/Local/Android/sdk/tools/proguard/proguard-android-optimize.txt'
             zipAlignEnabled true
         }
@@ -29,9 +30,9 @@ android {
             minifyEnabled false
             pseudoLocalesEnabled true
             //proguardFile 'C:/Users/DavidDawes/AppData/Local/Android/sdk/tools/proguard/proguard-android-optimize.txt'
+            //proguardFile '/home/davidldawes/Android/Sdk/tools/proguard/proguard-android.txt'
             proguardFile 'C:/Users/jugld/AppData/Local/Android/sdk/tools/proguard/proguard-android.txt'
         }
-
     }
     productFlavors {
     }

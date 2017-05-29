@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -37,6 +38,7 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
     final private static int MY_PERMISSIONS_REQUEST_CAMERA = 23;
     private boolean zapPending = false;
     private boolean scanPending = false;
+    private MediaPlayer mp;
 
     private Companies cos = new Companies();
 
@@ -53,6 +55,7 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
         scanBtn = (ImageView) findViewById(R.id.scan_button);
         setKochzapBar();
         scanBtn.setOnClickListener(this);
+        mp = MediaPlayer.create(this, R.raw.beep);
     }
 
     @Override
@@ -260,6 +263,7 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
 
                         if (Companies.containscompany(company)) {
                             lastResult = result.FAIL;
+                            mp.start();
                         } else {
                             lastResult = result.PASS;
                         }

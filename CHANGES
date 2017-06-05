@@ -373,6 +373,8 @@
   - Add StopActivity to nag the user not to buy Kock merchandise and show the red thumbs down
   - Fiddled with licensing a bit, added a few translations, probably not needed but interesting.
   - Broke the scheduling stuff
+3.4.0 Kochzap Fork
+  -  Removed many settings, added company list and start activity that scans for companies on the Koch Industries list
 5.0.0 (November 2016)
   - Adding KochZap Activities: start and stop, with hooks in CaptureActivity
   - Added graphics and some string resources

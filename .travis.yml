@@ -1,6 +1,6 @@
 language: java
 sudo: false
-install: cd andrdoid/app; ./gradlew clean
+install: pwd; ls; cd andrdoid/app; ./gradlew clean
 script:
   - pwd; ls; cd andrdoid/app; ./gradlew clean
 matrix:

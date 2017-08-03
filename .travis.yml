@@ -1,8 +1,8 @@
 language: java
 sudo: false
-install: cd android/app; ./gradlew clean
+install: cd android; ./gradlew clean
 script:
-  - cd android/app; ./gradlew clean
+  - cd android; ./gradlew build
 matrix:
  include:
    # Covers Java 7, Open JDK, and code coverage

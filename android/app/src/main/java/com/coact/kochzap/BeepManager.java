@@ -41,18 +41,22 @@ final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
 
   private final Activity activity;
   private MediaPlayer mediaPlayer;
+  private MediaPlayer mediaPlayerBad;
   private boolean playBeep;
+  private boolean playBuzz;
   private boolean vibrate;
 
-  BeepManager(Activity activity) {
+  public BeepManager(Activity activity) {
     this.activity = activity;
     this.mediaPlayer = null;
+    this.mediaPlayerBad = null;
     updatePrefs();
   }
 
-  synchronized void updatePrefs() {
+  public synchronized void updatePrefs() {
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
     playBeep = shouldBeep(prefs, activity);
+    playBuzz = shouldBuzz(prefs, activity);
     vibrate = prefs.getBoolean(PreferencesActivity.KEY_VIBRATE, false);
     if (playBeep && mediaPlayer == null) {
       // The volume on STREAM_SYSTEM is not adjustable, and users found it too loud,
@@ -60,11 +64,27 @@ final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
       activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
       mediaPlayer = buildMediaPlayer(activity);
     }
+    if (playBuzz && mediaPlayerBad == null) {
+      // The volume on STREAM_SYSTEM is not adjustable, and users found it too loud,
+      // so we now play on the music stream.
+      activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+      mediaPlayerBad = buildSelectedMediaPlayer(activity, R.raw.buzzer);
+    }
   }
 
-  synchronized void playBeepSoundAndVibrate() {
+  public synchronized void playBeepSoundAndVibrate() {
     if (playBeep && mediaPlayer != null) {
       mediaPlayer.start();
+    }
+    if (vibrate) {
+      Vibrator vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+      vibrator.vibrate(VIBRATE_DURATION);
+    }
+  }
+
+  public synchronized void playBuzzSoundAndVibrate() {
+    if (playBuzz && mediaPlayerBad != null) {
+      mediaPlayerBad.start();
     }
     if (vibrate) {
       Vibrator vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
@@ -84,10 +104,26 @@ final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
     return shouldPlayBeep;
   }
 
+  private static boolean shouldBuzz(SharedPreferences prefs, Context activity) {
+    boolean shouldPlayBuzz = prefs.getBoolean(PreferencesActivity.KEY_PLAY_BUZZ, true);
+    if (shouldPlayBuzz) {
+      // See if sound settings overrides this
+      AudioManager audioService = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
+      if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+        shouldPlayBuzz = false;
+      }
+    }
+    return shouldPlayBuzz;
+  }
+
   private MediaPlayer buildMediaPlayer(Context activity) {
+    return buildSelectedMediaPlayer(activity, R.raw.beep);
+  }
+
+  private MediaPlayer buildSelectedMediaPlayer(Context activity, int sound) {
     MediaPlayer mediaPlayer = new MediaPlayer();
     try {
-      AssetFileDescriptor file = activity.getResources().openRawResourceFd(R.raw.beep);
+      AssetFileDescriptor file = activity.getResources().openRawResourceFd(sound);
       try {
         mediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(), file.getLength());
       } finally {

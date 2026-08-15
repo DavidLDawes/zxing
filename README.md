@@ -3,19 +3,25 @@
 ## Forked
 This is a fork off of the regular zxing open source project.
 
+### Travis CI
+Added Continuous Integration using travis.ci since it is free for open source
+- Not working so far, breaks because it does not find the NDK
+- Trying setting NDK_HOME="" in travis CI.
+
 #### Added to the fork
 Fork specific additions:
 Added list of bad companies, susidiaries of Koch Industries to the best of our abilities.
 When scanning a product, if the company (first 6 digits) matches one of the Kock Brother's Industries
-companies we stop normal operation and pull up the "Stop" page. The stop page shws a red thums down and
-asks the user not to buy the Koch Indstries prooduct.
+companies we make a buzzer noiuse and put the Red thumbs down on the button.
 Modified privacy, I turned on Google Analytics so I noted that.
 Modified license a little to include KochZap references, since that does not need to be localized.
 I did end up having to add strings to all 30+ locales, and used Google translate for that.
 
+More recently, we removed most of the settings and added a beep on good and buzz on bad feature with
+settings to disable it. The feature is supposed to respect volume/muting too.
 ### Broken (Kochzap fork specific):
 	Schedule from QR Code - part of schedule did not compile so I commented bits out. Does not work.
-	Settings - we removed most settings from UI, left code ij place so defaults are unchanged.
+	Settings - we removed most settings from UI, left code in place so defaults are unchanged.
 ## Get Started Developing
 To get started, please visit: https://github.com/zxing/zxing/wiki/Getting-Started-Developing
 

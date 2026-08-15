@@ -122,12 +122,16 @@
     <string name="preferences_invert_scan_summary">Scan for white barcodes on black background. Not available on some devices.</string>
     <string name="preferences_name">Settings</string>
     <string name="preferences_orientation_title">No automatic rotation</string>
-    <string name="preferences_play_beep_title">Beep</string>
+    <string name="preferences_play_beep_title">Play Beep When No Allergens Are Found</string>
+    <string name="preferences_play_buzz_title">Play Buzz When Allergens Are Found</string>
+    <string name="preferences_play_buzz">Play buzzer sound if allergens are found</string>
+    <string name="preferences_vibrate">Vibrate when a UPC is checked</string>
     <string name="preferences_remember_duplicates_summary">Store multiple scans of the same barcode in History</string>
     <string name="preferences_remember_duplicates_title">Remember duplicates</string>
     <string name="preferences_result_title">Result settings</string>
     <string name="preferences_scanning_title">When scanning for barcodes, decode\u2026</string>
     <string name="preferences_search_country">Search country</string>
+    <string name="preferences_sound_title">Sound settings</string>
     <string name="preferences_supplemental_summary">Try to retrieve more information about the barcode contents</string>
     <string name="preferences_supplemental_title">Retrieve more info</string>
     <string name="preferences_vibrate_title">Vibrate</string>

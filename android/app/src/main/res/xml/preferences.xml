@@ -28,4 +28,14 @@
         android:defaultValue="true"
         android:title="@string/preferences_auto_focus_title"/>
   </PreferenceCategory>
+  <PreferenceCategory android:title="@string/preferences_sound_title">
+    <CheckBoxPreference
+        android:key="preferences_play_beep"
+        android:defaultValue="true"
+        android:title="@string/preferences_play_beep_title"/>
+    <CheckBoxPreference
+        android:key="preferences_play_buzz"
+        android:defaultValue="true"
+        android:title="@string/preferences_play_buzz_title"/>
+  </PreferenceCategory>
 </PreferenceScreen>

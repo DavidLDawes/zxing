@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -33,6 +34,7 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
 
     public ImageView scanBtn;
 
+    private BeepManager beepManager;
     private boolean cameraPermission = false;
     final private static int MY_PERMISSIONS_REQUEST_CAMERA = 23;
     private boolean zapPending = false;
@@ -45,14 +47,34 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
     }
 
     private static result lastResult = result.NONE;
+    //MediaPlayer mPlayerBuzz;
+    //MediaPlayer mPlayerBeep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         scanBtn = (ImageView) findViewById(R.id.scan_button);
+        beepManager = new BeepManager(this);
         setKochzapBar();
         scanBtn.setOnClickListener(this);
+        //mPlayerBuzz = MediaPlayer.create(this, R.raw.buzzer);
+        //mPlayerBeep = MediaPlayer.create(this, R.raw.beep);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        beepManager.updatePrefs();
+    }
+
+    @Override
+    public void onDestroy() {
+
+        //mPlayerBuzz.stop();
+        //mPlayerBeep.stop();
+        beepManager.close();
+        super.onDestroy();
     }
 
     @Override
@@ -260,8 +282,10 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
 
                         if (Companies.containscompany(company)) {
                             lastResult = result.FAIL;
+                            beepManager.playBuzzSoundAndVibrate();
                         } else {
                             lastResult = result.PASS;
+                            beepManager.playBeepSoundAndVibrate();
                         }
                     } else {
                         note("No scan data received.");
